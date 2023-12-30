@@ -148,20 +148,6 @@ const manufactureProduct = async (name, price) => {
 };
 
 
-
-const getProductDetails = async (productId) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const contract = await getEthereumContract();
-      const productDetails = await contract.getProductDetails(productId);
-      resolve(productDetails);
-    } catch (error) {
-      reportError(error);
-      reject(error);
-    }
-  });
-};
-
 const loadProductDetails = async () => {
   try {
     if (!ethereum) return reportError('Please install Metamask');
