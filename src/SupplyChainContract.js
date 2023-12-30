@@ -201,6 +201,20 @@ const structureProducts = (productsDetails) => {
   }));
 };
 
+const getProductDetails = async (productId) => {
+  try {
+    const contract = await getEthereumContract();
+    const productDetails = await contract.getProductDetails(productId);
+    
+    // Log product details for debugging
+    console.log('Product Details for Product ID', productId, ':', productDetails);
+
+    return productDetails;
+  } catch (error) {
+    reportError(error);
+  }
+};
+
 const reportError = (error) => {
   console.log(error);
 };
